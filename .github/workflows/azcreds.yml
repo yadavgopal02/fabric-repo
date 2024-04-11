@@ -20,7 +20,21 @@ jobs:
         with:
           inlineScript: |
             Get-AzResourceGroup
-           
+            $commitToGitUrl = "https://api.fabric.microsoft.com/v1/workspaces/654d6099-5fef-4a37-90b2-c07d16f3f88a/git/commitToGit"
+            
+            $fabricToken = (Get-AzAccessToken).Token
+            
+            $commitToGitBody = @{
+            mode = "All"
+            comment = "Saving"
+            } | ConvertTo-Json
+
+            $global:fabricHeaders = @{
+            'Content-Type' = "application/json"
+            'Authorization' = "Bearer {0}" -f $fabricToken
+            $result = (Invoke-RestMethod -Headers $global:fabricHeaders -Uri $commitToGitUrl -Method GET).Value
+            echo $result
+            
             # Parameters - fill these in before running the script!
             # =====================================================
             
