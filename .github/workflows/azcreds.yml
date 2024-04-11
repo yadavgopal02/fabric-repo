@@ -32,7 +32,7 @@ jobs:
             $global:fabricHeaders = @{
             'Content-Type' = "application/json"
             'Authorization' = "Bearer {0}" -f $fabricToken
-            $result = (Invoke-RestMethod -Headers $global:fabricHeaders -Uri $commitToGitUrl -Method GET)
+            $result = (Invoke-RestMethod -Headers $global:fabricHeaders -Uri $commitToGitUrl -Method POST -Body $commitToGitBody)
             
             
             # Parameters - fill these in before running the script!
