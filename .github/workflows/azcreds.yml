@@ -43,12 +43,12 @@ jobs:
                 #Connect-AzAccount | Out-Null
             
                 # Get authentication
-                $fabricToken = (Get-AzAccessToken -ResourceUrl $global:resourceUrl).Token
+                #$fabricToken = (Get-AzAccessToken -ResourceUrl $global:resourceUrl).Token
                 #$fabricToken = (Get-AzAccessToken).Token
             	  echo $fabricToken
                 $global:fabricHeaders = @{
                     'Content-Type' = "application/json"
-                    'Authorization' = "Bearer {0}" -f $fabricToken
+                    'Authorization' = "Bearer {0}" -f '${{ secrets.FABRIC_TOKEN }}'
                 }
             }
             
