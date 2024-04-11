@@ -56,7 +56,8 @@ jobs:
             function GetWorkspaceByName($workspaceName) {
                 # Get workspaces    
                 $getWorkspacesUrl = "{0}/workspaces" -f $global:baseUrl
-                $workspaces = (Invoke-RestMethod -Headers $global:fabricHeaders -Uri $getWorkspacesUrl -Method GET).value
+                #$workspaces = (Invoke-RestMethod -Headers $global:fabricHeaders -Uri $getWorkspacesUrl -Method GET).value
+                $workspaces = (Invoke-RestMethod -Uri $getWorkspacesUrl -Method GET -ContentType 'application/json' ).value
             
                 # Try to find the workspace by display name
                 $workspace = $workspaces | Where-Object {$_.DisplayName -eq $workspaceName}
