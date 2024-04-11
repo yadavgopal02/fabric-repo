@@ -20,26 +20,15 @@ jobs:
         with:
           inlineScript: |
             Get-AzResourceGroup
-            # This sample script calls the Fabric API to programmatically commit all changes from workspace to Git.
-            
-            # For documentation, please see:
-            # https://learn.microsoft.com/en-us/rest/api/fabric/core/git/commit-to-git
-            
-            # Instructions:
-            # 1. Install PowerShell (https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell)
-            # 2. Install Azure PowerShell Az module (https://learn.microsoft.com/en-us/powershell/azure/install-azure-powershell)
-            # 3. Run PowerShell as an administrator
-            # 4. Fill in the parameters below
-            # 5. Change PowerShell directory to where this script is saved
-            # 6. > ./GitIntegration-CommitAll.ps1
-            # 7. [Optional] Wait for long running operation to be completed - see LongRunningOperation-Polling.ps1
-            
+           
             # Parameters - fill these in before running the script!
             # =====================================================
             
             $workspaceName = "Dev-Fabric-workpace"      # The name of the workspace
             $commitMessage = "Saving the Data to GitHub"      # The commit message
-            
+
+            echo $workspaceName
+            echo $commitMessage
             # End Parameters =======================================
             
             $global:baseUrl = "https://api.fabric.microsoft.com/v1" # Replace with environment-specific base URL. For example: "https://api.fabric.microsoft.com/v1"
@@ -56,7 +45,7 @@ jobs:
                 # Get authentication
                 $fabricToken = (Get-AzAccessToken -ResourceUrl $global:resourceUrl).Token
                 #$fabricToken = (Get-AzAccessToken).Token
-            	
+            	  echo $fabricToken
                 $global:fabricHeaders = @{
                     'Content-Type' = "application/json"
                     'Authorization' = "Bearer {0}" -f $fabricToken
