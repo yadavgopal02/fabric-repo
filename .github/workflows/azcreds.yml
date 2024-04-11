@@ -33,7 +33,7 @@ jobs:
             'Content-Type' = "application/json"
             'Authorization' = "Bearer {0}" -f $fabricToken
             }
-            $result = Invoke-RestMethod -Headers $global:fabricHeaders -Uri $commitToGitUrl -Method POST -Body $commitToGitBody
+            $result = Invoke-WebRequest -Headers $global:fabricHeaders -Uri $commitToGitUrl -Method POST -Body $commitToGitBody
             
             echo $result
             
