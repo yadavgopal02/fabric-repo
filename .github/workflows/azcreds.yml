@@ -44,7 +44,7 @@ jobs:
             
                 # Get authentication
                 #$fabricToken = (Get-AzAccessToken -ResourceUrl $global:resourceUrl).Token
-                $fabricToken = (Get-AzAccessToken)
+                $fabricToken = (Get-AzAccessToken).Token
                 
             	  echo $fabricToken
                 $global:fabricHeaders = @{
