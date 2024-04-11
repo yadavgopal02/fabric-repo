@@ -19,23 +19,26 @@ jobs:
         uses: Azure/powershell@v1
         with:
           inlineScript: |
+            azPSVersion: "latest"    
             Get-AzResourceGroup
-            $commitToGitUrl = "https://api.fabric.microsoft.com/v1/workspaces/654d6099-5fef-4a37-90b2-c07d16f3f88a/git/commitToGit"
-            
+            Get-AzAccessToken
+
             $fabricToken = (Get-AzAccessToken).Token
-            
+            echo $fabricToken
+            $global:fabricHeaders = @{
+              'Content-Type' = "application/json"
+              'Authorization' = "Bearer {0}" -f $fabricToken
+            }
+
+
+            $commitToGitUrl = "https://api.fabric.microsoft.com/v1/workspaces/654d6099-5fef-4a37-90b2-c07d16f3f88a/git/commitToGit"
+
             $commitToGitBody = @{
             mode = "All"
             comment = "Saving"
-            } | ConvertTo-Json
-
-            $global:fabricHeaders = @{
-            'Content-Type' = "application/json"
-            'Authorization' = "Bearer {0}" -f $fabricToken
-            }
-            $result = Invoke-WebRequest -Headers $global:fabricHeaders -Uri $commitToGitUrl -Method POST -Body $commitToGitBody
+            } | ConvertTo-Json	
+            Invoke-WebRequest -Headers $global:fabricHeaders -Uri $commitToGitUrl -Method POST -Body $commitToGitBody	
+            #echo $result
             
-            echo $result
-            
-          azPSVersion: "latest"       
+               
             
