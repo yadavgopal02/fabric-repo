@@ -9,7 +9,7 @@ jobs:
   Windows-latest:
     runs-on: windows-latest
     steps:
-      - name: OIDC Login to Azure Public Cloud with AzPowershell (enableAzPSSession true)
+      - name: Az login with AzPowershell
         uses: azure/login@v1
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
