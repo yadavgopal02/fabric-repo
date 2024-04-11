@@ -29,9 +29,9 @@ jobs:
             comment = "Saving"
             } | ConvertTo-Json
 
-           $global:fabricHeaders = @{
-           'Content-Type' = "application/json"
-           'Authorization' = "Bearer {0}" -f $fabricToken
+            $global:fabricHeaders = @{
+            'Content-Type' = "application/json"
+            'Authorization' = "Bearer {0}" -f $fabricToken
             }
             $result = (Invoke-RestMethod -Headers $global:fabricHeaders -Uri $commitToGitUrl -Method POST -Body $commitToGitBody)
             
