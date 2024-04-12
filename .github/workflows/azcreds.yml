@@ -1,4 +1,4 @@
-name: AzureLoginSample
+name: AzureLoginSample1
 
 on: [push]
 
