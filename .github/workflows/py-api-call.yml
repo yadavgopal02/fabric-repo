@@ -20,7 +20,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'
+        python-version: '3.11'
 
     - name: Install requests library
       run: |
@@ -28,4 +28,4 @@ jobs:
         pip install requests
 
     - name: Run Python script
-      run: python deploy/api_test.py
+      run: python api_test.py
