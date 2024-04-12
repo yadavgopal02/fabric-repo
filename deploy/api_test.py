@@ -1,7 +1,7 @@
 import requests
 import os
 
-# Replace these values with your own
+# Replace these values with your own.
 tenant_id = os.environ['tenant_id']
 client_id = os.environ['client_id']
 client_secret = os.environ['client_secret']
