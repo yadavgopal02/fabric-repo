@@ -9,6 +9,9 @@ resource_url = "https://analysis.windows.net/powerbi/api"
 
 # Get Access Token
 token_url = f"https://login.microsoftonline.com/{tenant_id}/oauth2/token"
+
+#PRINTING TENANT ID
+print(f"TOKEN:, {token_url}")
 token_data = {
     "grant_type": "client_credentials",
     "client_id": client_id,
