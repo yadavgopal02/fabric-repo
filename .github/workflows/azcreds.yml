@@ -36,7 +36,7 @@ jobs:
             mode = "All"
             comment = "Saving"
             } | ConvertTo-Json	
-            /usr/bin/pwsh -Command Invoke-WebRequest -Headers $global:fabricHeaders -Uri $commitToGitUrl -Method POST -Body commitToGitBody
+            Invoke-WebRequest -Headers $global:fabricHeaders -Uri $commitToGitUrl -Method POST -Body commitToGitBody
             #echo $result
             
                
