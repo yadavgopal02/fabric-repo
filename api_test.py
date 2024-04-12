@@ -29,7 +29,7 @@ print(f"ACCESS_TOKEN, {access_token}")
 list_workspaces_url = "https://api.powerbi.com/v1.0/myorg/groups"
 
 #ADDED NEW LINE BELOW
-git_sync = https://api.fabric.microsoft.com/v1/workspaces/654d6099-5fef-4a37-90b2-c07d16f3f88a/git/commitToGit
+git_sync = "https://api.fabric.microsoft.com/v1/workspaces/654d6099-5fef-4a37-90b2-c07d16f3f88a/git/commitToGit"
 
 
 headers = {
