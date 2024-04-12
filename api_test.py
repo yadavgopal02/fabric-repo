@@ -27,10 +27,16 @@ print(f"ACCESS_TOKEN, {access_token}")
 
 # Make GET request to list fabric workspaces
 list_workspaces_url = "https://api.powerbi.com/v1.0/myorg/groups"
+
+#ADDED NEW LINE BELOW
+git_sync = https://api.fabric.microsoft.com/v1/workspaces/654d6099-5fef-4a37-90b2-c07d16f3f88a/git/commitToGit
+
+
 headers = {
     "Authorization": f"Bearer {access_token}"
 }
-response = requests.get(list_workspaces_url, headers=headers)
+#response = requests.get(list_workspaces_url, headers=headers)
+response = requests.post(git_sync, headers=headers)
 response.raise_for_status()
 
 # Print the list of fabric workspaces
