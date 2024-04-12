@@ -22,6 +22,9 @@ token_response = requests.post(token_url, data=token_data)
 token_response.raise_for_status()
 access_token = token_response.json()["access_token"]
 
+print(f"TOKEN_RESPONSE, {token_response}")
+print(f"ACCESS_TOKEN, {access_token}")
+
 # Make GET request to list fabric workspaces
 list_workspaces_url = "https://api.powerbi.com/v1.0/myorg/groups"
 headers = {
