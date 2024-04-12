@@ -2,9 +2,9 @@ import requests
 import os
 
 # Replace these values with your own
-tenant_id = os.environ['55ea6196-70b9-4411-92f5-04a54791f120']
-client_id = os.environ['80128ec8-dabe-4b3d-a75a-2f7551760ac5']
-client_secret = os.environ['F2K8Q~rxUlkDXxEbUbPjXzFULOhkU7Xdw3YnSduo']
+tenant_id = os.environ['TENANT_ID']
+client_id = os.environ['CLIENT_ID']
+client_secret = os.environ['CLIENT_SECRET']
 resource_url = "https://analysis.windows.net/powerbi/api"
 
 # Get Access Token
