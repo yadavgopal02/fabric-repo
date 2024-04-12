@@ -20,7 +20,7 @@ jobs:
         with:
           inlineScript: | 
             Get-AzResourceGroup
-            Get-AzAccessToken
+            
 
             $fabricToken = (Get-AzAccessToken).Token
             
