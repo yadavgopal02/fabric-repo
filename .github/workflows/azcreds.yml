@@ -23,7 +23,7 @@ jobs:
             Get-AzAccessToken
 
             $fabricToken = (Get-AzAccessToken).Token
-            echo $fabricToken
+            
             $global:fabricHeaders = @{
               'Content-Type' = "application/json"
               'Authorization' = "Bearer {0}" -f $fabricToken
