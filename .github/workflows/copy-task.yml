@@ -1,6 +1,6 @@
 name: Copy Data.
 on:
-push:
+push: main
 jobs:
 copy_data:
    runs-on: ubuntu-latest
