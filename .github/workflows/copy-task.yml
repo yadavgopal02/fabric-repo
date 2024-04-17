@@ -1,6 +1,9 @@
 name: Copy-Data
 on:
-push: main
+  push:
+    branches:
+      - main
+
 jobs:
 copy_data:
    runs-on: ubuntu-latest
