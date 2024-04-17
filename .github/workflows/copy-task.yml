@@ -4,10 +4,10 @@ push: main
 jobs:
 copy_data:
    runs-on: ubuntu-latest
-   steps:
-   - name: Checkout Repository
+steps:
+  - name: Checkout Repository
      uses: actions/checkout@v2
-   - name: Copy Data
+  - name: Copy Data
      run: |
        mkdir -p Copy_folder
        cp -r "deploy"/* dest/
