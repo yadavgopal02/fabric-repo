@@ -1,4 +1,4 @@
-name: Copy Data
+name: Copy Data.
 on:
 push:
 jobs:
