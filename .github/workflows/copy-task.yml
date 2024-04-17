@@ -16,7 +16,7 @@ jobs:
           cp -r "deploy"/* dest/
       - name: Commit and Push Changes
         run: |
-          git config --global user.email "yadavgopal02@gmail.com"
+         # git config --global user.email "yadavgopal02@gmail.com"
           git config --global user.name "yadavgopal02"
           git add .
           git commit -m "Copy data from source_folder to destination_folder"
