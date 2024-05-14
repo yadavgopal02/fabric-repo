@@ -20,7 +20,7 @@ jobs:
         
       run: |
         az login --username $AZURE_USERNAME --password $AZURE_PASSWORD
-        #token=$(az account get-access-token | grep accessToken)
+        ##token=$(az account get-access-token | grep accessToken)
         #access_token=$(az account get-access-token --query accessToken -o tsv)
         ACCESS_TOKEN=$(az account get-access-token --resource "https://api.fabric.microsoft.com" --query "accessToken" -o tsv)
         token=$(az account get-access-token | grep accessToken | cut -d: -f2 | cut -d, -f1 | cut -d'"' -f2)
