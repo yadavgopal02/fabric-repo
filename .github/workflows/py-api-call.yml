@@ -1,4 +1,4 @@
-name: Call Fabric REST API
+name: Call Fabric REST API.
 
 on:
   push:
