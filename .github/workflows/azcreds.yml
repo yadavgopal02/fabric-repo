@@ -31,8 +31,8 @@ jobs:
             
             $global:fabricHeaders = @{ 'Authorization' = "Bearer {0}" -f $fabricToken }
 
-            $commitToGitUrl = "https://api.fabric.microsoft.com/v1/workspaces/654d6099-5fef-4a37-90b2-c07d16f3f88a/git/commitToGit"
-
+            $commitToGitUrl = "https://api.fabric.microsoft.com/v1/workspaces/654d6099-5fef-4a37-90b2-c07d16f3f88a/notebooks
+#654d6099-5fef-4a37-90b2-c07d16f3f88a
             $commitToGitBody = @{
             mode = "All"
             comment = "Saving"
