@@ -28,7 +28,14 @@ jobs:
         pip install requests
         pip install pbirest
         pip install pypowerbi
-        python api_test.py
+        #python api_test.py
+        https://api.fabric.microsoft.com/v1/workspaces/cfafbeb1-8037-4d0c-896e-a46fb27ff229/notebooks
+
+        {
+          "displayName": "Notebook 11",
+          "description": "A notebook description."
+        }
+        
 
     - name: Run Python script
-      run: python api_test.py
+      #run: python api_test.py
