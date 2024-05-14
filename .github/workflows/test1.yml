@@ -18,8 +18,8 @@ jobs:
         AZURE_USERNAME: ${{ secrets.AZURE_USERNAME }}
         AZURE_PASSWORD: ${{ secrets.AZURE_PASSWORD }}
       run: |
-        az login --username $AZURE_USERNAME --password $AZURE_PASSWORD
-
+        MYCREDS = $(az login --username $AZURE_USERNAME --password $AZURE_PASSWORD)
+        echo "mycreds are "$MYCREDS"
         
     - name: Make API Call.
       env:
