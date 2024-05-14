@@ -36,6 +36,3 @@ jobs:
           "description": "A notebook description."
         }
         
-
-    - name: Run Python script
-      #run: python api_test.py
