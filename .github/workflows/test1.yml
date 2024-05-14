@@ -15,6 +15,7 @@ jobs:
 
     - name: Get Azure Token
       run: |
+        az login
         token = $(az account get-access-token | grep accessToken)
         echo $token
     - name: Make API Call.
