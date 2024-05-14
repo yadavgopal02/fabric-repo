@@ -24,6 +24,14 @@ jobs:
         access_token=$(az account get-access-token --query accessToken -o tsv)
         echo "Azure Access Token: $access_token"
         echo "Token $token"
+        curl --location 'https://api.fabric.microsoft.com/v1/workspaces/029ea194-7a2f-492e-8fa9-d1e471195c57/notebooks' \
+        --header 'Content-Type: application/json' \
+        --header 'Host: graph.microsoft.com' \
+        --header 'Authorization: Bearer $token' \
+        --data '{
+          "displayName":"notebook-4",
+          "description":"test desc"
+        }'
         
     - name: Make API Call.
       env:
