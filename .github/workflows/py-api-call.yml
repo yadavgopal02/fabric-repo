@@ -29,7 +29,7 @@ jobs:
         pip install pbirest
         pip install pypowerbi
         #python api_test.py
-        https://api.fabric.microsoft.com/v1/workspaces/cfafbeb1-8037-4d0c-896e-a46fb27ff229/notebooks
+        https://api.fabric.microsoft.com/v1/workspaces/0fde94f2-391e-42c0-bc8c-f29f17cac5f6/notebooks
 
         {
           "displayName": "Notebook 11",
