@@ -25,6 +25,4 @@ jobs:
         --header 'Content-Type: application/json' \
         --header 'Host: graph.microsoft.com' \
         --header 'Authorization: Bearer ${{ env.ID_TOKEN }}' \
-        --data '{
-          "displayName":"test_sp11",
-          "description":"test desc" }'
+        --data /deploy/notebook.json
