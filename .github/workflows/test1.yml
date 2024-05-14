@@ -20,6 +20,7 @@ jobs:
       run: |
         # Make API call to create Notebook VM in Azure ML workspace
         # Example:
-        #az ml computetarget create --name "MyNotebookVM" --vm-size "Standard_D2_v2" --workspace-name "Dev-Fabric-workpace" --resource-group "rg_fabric" --compute-type "Notebook" --output json > notebook_vm.json
+        az ml computetarget create --name "MyNotebookVM" --vm-size "Standard_D2_v2" --workspace-name "Dev-Fabric-workpace" --resource-group "rg_fabric" --compute-type "Notebook" --output json > notebook_vm.json
+        az ml notebook attach --compute-target "MyNotebookVM" --path "/deploy/notebook.ipynb" --workspace-name "Dev-Fabric-workpace" --resource-group "rg_fabric"
 
   
