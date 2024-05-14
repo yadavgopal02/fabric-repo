@@ -1,0 +1,25 @@
+name: Create Fabric Notebook
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create_notebook_vm:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Login to Azure
+      run: az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
+
+    - name: Create Notebook VM
+      run: |
+        # Make API call to create Notebook VM in Azure ML workspace
+        # Example:
+        #az ml computetarget create --name "MyNotebookVM" --vm-size "Standard_D2_v2" --workspace-name "Dev-Fabric-workpace" --resource-group "rg_fabric" --compute-type "Notebook" --output json > notebook_vm.json
+
+  
