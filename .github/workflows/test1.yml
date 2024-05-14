@@ -20,8 +20,10 @@ jobs:
         
       run: |
         az login --username $AZURE_USERNAME --password $AZURE_PASSWORD
-        token = $(az account get-access-token | grep accessToken)
-        echo $token
+        token=$(az account get-access-token | grep accessToken)
+        access_token=$(az account get-access-token --query accessToken -o tsv)
+        echo "Azure Access Token: $access_token"
+        echo "Token $token"
         
     - name: Make API Call.
       env:
