@@ -19,5 +19,5 @@ jobs:
       run: |
         # Replace 'YOUR_API_ENDPOINT' with the actual Fabric API endpoint
         # Replace 'YOUR_REQUEST_BODY' with the request body if needed
-        curl -X POST -H "Authorization: Bearer $FABRIC_API_TOKEN" -H "Content-Type: application/json" -d 'notebook trial' 'https://api.fabric.microsoft.com/v1/workspaces/0fde94f2-391e-42c0-bc8c-f29f17cac5f6/notebooks'
-        curl -H "Authorization: Bearer $FABRIC_API_TOKEN" "https://api.fabric.microsoft.com/v1/workspaces/0fde94f2-391e-42c0-bc8c-f29f17cac5f6/notebooks" | jq '.'
+        curl --http1.1 -X POST -H "Authorization: Bearer $FABRIC_API_TOKEN" -H "Content-Type: application/json" -d 'notebook trial' 'https://api.fabric.microsoft.com/v1/workspaces/0fde94f2-391e-42c0-bc8c-f29f17cac5f6/notebooks'
+        curl --http1.1 -H "Authorization: Bearer $FABRIC_API_TOKEN" "https://api.fabric.microsoft.com/v1/workspaces/0fde94f2-391e-42c0-bc8c-f29f17cac5f6/notebooks" | jq '.'
