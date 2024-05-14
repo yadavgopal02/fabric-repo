@@ -20,7 +20,7 @@ jobs:
         
       run: |
         az login --username $AZURE_USERNAME --password $AZURE_PASSWORD
-        $token = $(az account get-access-token | grep accessToken)
+        token = $(az account get-access-token | grep accessToken)
         echo $token
         
     - name: Make API Call.
