@@ -19,7 +19,7 @@ jobs:
       run: |
        
         #$tokenval = (Get-AzAccessToken).Token
- 
+        echo $ID_TOKEN
         curl --location 'https://api.fabric.microsoft.com/v1/workspaces/029ea194-7a2f-492e-8fa9-d1e471195c57/notebooks' --header 'Content-Type: application/json' --header 'Host: graph.microsoft.com' --header 'Authorization: Bearer $ID_TOKEN' \
         --data '{
           "displayName":"test_sp5",
