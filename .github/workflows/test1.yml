@@ -13,7 +13,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Azure Login
+      env:
+        AZURE_USERNAME: ${{ secrets.AZURE_USERNAME }}
+        AZURE_PASSWORD: ${{ secrets.AZURE_PASSWORD }}
+      run: |
+        az login --username $AZURE_USERNAME --password $AZURE_PASSWORD
 
+        
     - name: Make API Call.
       env:
         ID_TOKEN: ${{ secrets.MYID_TOKEN }}
@@ -25,4 +32,7 @@ jobs:
         --header 'Content-Type: application/json' \
         --header 'Host: graph.microsoft.com' \
         --header 'Authorization: Bearer ${{ env.ID_TOKEN }}' \
-        --data 'deploy/notebook.py'
+        --data '{
+          "displayName":"notebook-3",
+          "description":"test desc"
+        }'
