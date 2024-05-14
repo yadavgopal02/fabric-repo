@@ -23,8 +23,8 @@ jobs:
        
         #$tokenval = (Get-AzAccessToken).Token
         #echo "my token is $TEST_TOKEN"
-        echo "Test Token: ${{ env.TEST_TOKEN }}"
-        curl --location 'https://api.fabric.microsoft.com/v1/workspaces/029ea194-7a2f-492e-8fa9-d1e471195c57/notebooks' --header 'Content-Type: application/json' --header 'Host: graph.microsoft.com' --header 'Authorization: Bearer ${{ env.TEST_TOKEN }}' \
+        echo "Test Token: ${{ env.ID_TOKEN }}"
+        curl --location 'https://api.fabric.microsoft.com/v1/workspaces/029ea194-7a2f-492e-8fa9-d1e471195c57/notebooks' --header 'Content-Type: application/json' --header 'Host: graph.microsoft.com' --header 'Authorization: Bearer ${{ env.ID_TOKEN }}' \
         --data '{
           "displayName":"test_sp6",
           "description":"test desc" }'
