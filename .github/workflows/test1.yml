@@ -67,4 +67,4 @@ jobs:
         --header 'Host: graph.microsoft.com' \
         --header 'Authorization: Bearer ${{ env.AZURE_ACCESS_TOKEN }}' \
         --data "$parameter_value"
-        
+        done
