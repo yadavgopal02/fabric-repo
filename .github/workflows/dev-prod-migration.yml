@@ -2,7 +2,7 @@ name: Fabric API Call
 
 on:
   pull_request:
-    types: [opened, ready_for_review]
+    types: [assigned, opened, ready_for_review]
     
   push:
     branches:
