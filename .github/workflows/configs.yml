@@ -2,7 +2,7 @@
 "*.py":
   - yadavgopal02
 # it will matches `.github/foo.yaml` but not `.github/workflows/bar.yaml`
-".github/*":
+".deploy/*":
   - yadavgopal02
 # it will match any files
 "**/*":
