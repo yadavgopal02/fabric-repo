@@ -41,7 +41,7 @@ jobs:
         --header 'Host: graph.microsoft.com' \
         --header 'Authorization: Bearer ${{ env.AZURE_ACCESS_TOKEN }}' \
         --data '{
-          "displayName":"notebook-12",
+          "displayName":"Moodys",
           "description":"test desc"
         }'
         
@@ -57,6 +57,6 @@ jobs:
         --header 'Host: graph.microsoft.com' \
         --header 'Authorization: Bearer ${{ env.ID_TOKEN }}' \
         --data '{
-          "displayName":"notebook-9",
+          "displayName":"Moodys-1",
           "description":"test desc"
         }'
