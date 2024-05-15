@@ -20,13 +20,21 @@ jobs:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: true
       run: |
         az login --username $AZURE_USERNAME --password $AZURE_PASSWORD
-        #ACCESS_TOKEN=$(az account get-access-token --resource "https://api.fabric.microsoft.com" --query "accessToken" -o tsv)
+        ACCESS_TOKEN=$(az account get-access-token --resource "https://api.fabric.microsoft.com" --query "accessToken" -o tsv)
         echo "::set-env name=AZURE_ACCESS_TOKEN::$(az account get-access-token --resource "https://api.fabric.microsoft.com" --query "accessToken" -o tsv)"
-    
+        echo "Access Token: ${{ env.AZURE_ACCESS_TOKEN }}"
         #=============
-
+    - name: Print Access Token
+      run: |
+        echo "${{ steps.access_token.outputs.token }}"
+    - name: Save Access Token to File
+      run: |
+        echo "${{ steps.access_token.outputs.token }}" > access_token.txt
+    - name: Use Access Token in Workflow
+      run: |
         echo "Access Token: ${{ env.AZURE_ACCESS_TOKEN }}"
         #--------------
+
         
         curl --location 'https://api.fabric.microsoft.com/v1/workspaces/029ea194-7a2f-492e-8fa9-d1e471195c57/notebooks' \
         --header 'Content-Type: application/json' \
