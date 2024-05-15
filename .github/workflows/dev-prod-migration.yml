@@ -1,11 +1,8 @@
 name: Fabric API Call
 
 on:
-  issues:
-    types: [opened, edited, labeled, unlabeled]
   pull_request:
-    types: [opened, edited, labeled, unlabeled]
-    
+        
   push:
     branches:
       - main
@@ -16,16 +13,13 @@ on:
       - dest/**
 
 jobs:
-  Approval:
+  assign_reviewer:
     runs-on: ubuntu-latest
     steps:
-      - uses: wow-actions/auto-assign@v3
+      - uses: shufo/auto-assign-reviewer-by-files@v1.1.5
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # using the `org/team_slug` or `/team_slug` syntax to add git team as reviewers
-          reviewers: yadavgopal02
-          assignees: yadavgopal02
-          skipKeywords: wip, draft
+          config: ".github/config.yml"
+          token: ${{ secrets.GITHUB_TOKEN }}
 
           
   Dev-Migration:
