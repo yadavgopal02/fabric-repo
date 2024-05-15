@@ -56,7 +56,9 @@ jobs:
         --header 'Content-Type: application/json' \
         --header 'Host: graph.microsoft.com' \
         --header 'Authorization: Bearer ${{ env.ID_TOKEN }}' \
-        --data $(cat deploy/notebook.py)
+        --data (cat deploy/notebook.py)
+
+        cat deploy/notebook.py
         #--data '{
         #  "displayName":"Moodys-1",
         #  "description":"test desc"
