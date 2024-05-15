@@ -58,4 +58,4 @@ jobs:
         --header 'Host: graph.microsoft.com' \
         --header 'Authorization: Bearer ${{ env.AZURE_ACCESS_TOKEN }}' \
         --data "{\"parameter\": \"$parameter_value\"}"
-        
+        echo "{\"parameter\": \"$parameter_value\"}"
