@@ -37,12 +37,19 @@ jobs:
               "base": "main"
             }'  
   
-    
+  assign_reviewer:
+    runs-on: ubuntu-latest
+    needs: create_pr
+    steps:
+      - uses: shufo/auto-assign-reviewer-by-files@v1.1.5
+        with:
+          config: ".github/assign-by-files.yml"
+          token: ${{ secrets.GITHUB_TOKEN }}    
        
           
   Dev-Migration:
     runs-on: ubuntu-latest
-    needs: create_pr
+    needs: assign_reviewer
     steps:
     
       
