@@ -1,9 +1,7 @@
 name: Fabric API Call
 
 on:
-  pull_request:
-    types: [assigned, opened, ready_for_review]
-    
+   
   push:
     branches:
       - dev
@@ -40,14 +38,7 @@ jobs:
               "requested_reviewers": "yadavgopal02",
               "assignee": "yadavgopal02"
             }' 
-      - name: Add Reviewers
-        uses: madrapps/add-reviewers@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          reviewers: yadavgopal02
-          re-request-when-approved: true
-          re-request-when-changes-requested: true
- 
+      
           
   Dev-Migration:
     runs-on: ubuntu-latest
