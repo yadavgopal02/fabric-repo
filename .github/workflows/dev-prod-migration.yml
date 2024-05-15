@@ -120,8 +120,8 @@ jobs:
         if: github.event_name == 'push' && github.ref_type == 'branch'
         run: |
           # Extract branch name from ref
-          branch=$(echo "${{ github.ref }}" | awk -F'/' '{print $3}')
-          
+          #branch=$(echo "${{ github.ref }}" | awk -F'/' '{print $3}')
+          branch = "main"
           # Open a PR using GitHub API
           curl -X POST \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
