@@ -60,10 +60,8 @@ jobs:
         --header 'Content-Type: application/json' \
         --header 'Host: graph.microsoft.com' \
         --header 'Authorization: Bearer ${{ env.AZURE_ACCESS_TOKEN }}' \
-        --data $command_to_execute
-
-        
-        #--data '{
-        #  "displayName":"Moodys-1",
-        #  "description":"test desc"
-        #}'
+        --data #$command_to_execute   
+        '{
+          "displayName":"Moodys-1",
+          "description":"test desc"
+         }'
