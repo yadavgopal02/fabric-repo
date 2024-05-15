@@ -40,10 +40,13 @@ jobs:
               "requested_reviewers": "yadavgopal02",
               "assignee": "yadavgopal02"
             }' 
-      - name: Add reviewer      
-        uses: kentaro-m/auto-assign-action@v2.0.0
+      - name: Add Reviewers
+        uses: madrapps/add-reviewers@v1
         with:
-          configuration-path: ".github/workflows/configs.yml" 
+          token: ${{ secrets.GITHUB_TOKEN }}
+          reviewers: yadavgopal02
+          re-request-when-approved: true
+          re-request-when-changes-requested: true
  
           
   Dev-Migration:
