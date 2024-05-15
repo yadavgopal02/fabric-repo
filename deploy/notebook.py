@@ -1,4 +1,2 @@
-{
-  "displayName": "Notebook 11",
-  "description": "A notebook description."
-}
+"displayName": "Notebook 11",
+"description": "A notebook description."
