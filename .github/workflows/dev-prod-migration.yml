@@ -57,11 +57,11 @@ jobs:
         --header 'Authorization: Bearer ${{ env.AZURE_ACCESS_TOKEN }}' \
         --data "$parameter_value"
         done
-		
+
   Prod-Migration:
     runs-on: ubuntu-latest
-	needs: Dev-Migration
-	if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: Dev-Migration
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     steps:
     - name: Checkout repository
