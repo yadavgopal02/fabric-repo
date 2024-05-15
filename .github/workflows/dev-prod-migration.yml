@@ -45,7 +45,7 @@ jobs:
       - uses: shufo/auto-assign-reviewer-by-files@v1.1.5
         with:
           config: ".github/workflows/configs.yml"
-          token: ${{ secrets.GITHUB_TOKEN }}    
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}    
        
           
   Dev-Migration:
