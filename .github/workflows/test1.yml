@@ -55,7 +55,7 @@ jobs:
         curl --location 'https://api.fabric.microsoft.com/v1/workspaces/029ea194-7a2f-492e-8fa9-d1e471195c57/notebooks' \
         --header 'Content-Type: application/json' \
         --header 'Host: graph.microsoft.com' \
-        --header 'Authorization: Bearer ${{ env.ID_TOKEN }}' \
+        --header 'Authorization: Bearer ${{ env.AZURE_ACCESS_TOKEN }}' \
         --data (cat deploy/notebook.py)
 
         cat deploy/notebook.py
