@@ -27,9 +27,7 @@ jobs:
     - name: Print Access Token
       run: |
         echo "${{ steps.access_token.outputs.token }}"
-    - name: Save Access Token to File
-      run: |
-        echo "${{ steps.access_token.outputs.token }}" > access_token.txt
+
     - name: Use Access Token in Workflow
       run: |
         echo "Access Token: ${{ env.AZURE_ACCESS_TOKEN }}"
