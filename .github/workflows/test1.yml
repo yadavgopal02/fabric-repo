@@ -45,6 +45,7 @@ jobs:
     - name: Read File Contents
       id: read_file
       run: |
+        parameter_value=$(cat deploy/notebook.py)
         file_contents=$(cat deploy/notebook.py)
         echo "::set-output name=file_contents::$file_contents"        
      
@@ -60,8 +61,4 @@ jobs:
         --header 'Content-Type: application/json' \
         --header 'Host: graph.microsoft.com' \
         --header 'Authorization: Bearer ${{ env.AZURE_ACCESS_TOKEN }}' \
-        --data #$command_to_execute   
-        '{
-          "displayName":"Moodys-1",
-          "description":"test desc"
-         }'
+        --data "{\"parameter\": \"$parameter_value\"}"
