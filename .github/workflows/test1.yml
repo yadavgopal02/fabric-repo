@@ -20,11 +20,11 @@ jobs:
         
       run: |
         az login --username $AZURE_USERNAME --password $AZURE_PASSWORD
-        ACCESS_TOKEN=$(az account get-access-token --resource "https://api.fabric.microsoft.com" --query "accessToken" -o tsv) > tmp.out
-        
+        ACCESS_TOKEN=$(az account get-access-token --resource "https://api.fabric.microsoft.com" --query "accessToken" -o tsv)
+        echo $(az account get-access-token --resource "https://api.fabric.microsoft.com" --query "accessToken" -o tsv) 
         #token=$(az account get-access-token | grep accessToken | cut -d: -f2 | cut -d, -f1 | cut -d'"' -f2)
         echo "Azure Access Tokens: $ACCESS_TOKEN"
-        echo The file is `cat tmp.out`
+        
         curl --location 'https://api.fabric.microsoft.com/v1/workspaces/029ea194-7a2f-492e-8fa9-d1e471195c57/notebooks' \
         --header 'Content-Type: application/json' \
         --header 'Host: graph.microsoft.com' \
