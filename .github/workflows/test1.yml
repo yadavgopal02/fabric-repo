@@ -6,6 +6,9 @@ on:
       - main
     path:
       - deploy/**
+    paths-ignore:
+      - .github/**
+      - dest/**
       
 jobs:
   call_api:
