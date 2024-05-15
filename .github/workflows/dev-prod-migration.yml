@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: shufo/auto-assign-reviewer-by-files@v1.1.5
         with:
-          config: ".github/config.yml"
+          config: ".github/configs.yml"
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           
           
