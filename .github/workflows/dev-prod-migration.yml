@@ -5,7 +5,7 @@ on:
     types: [opened, reopened, synchronize, closed]    
   push:
     branches:
-      - main
+      - dev
     path:
       - deploy/**
     paths-ignore:
