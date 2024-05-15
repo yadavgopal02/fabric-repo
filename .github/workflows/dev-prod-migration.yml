@@ -90,11 +90,11 @@ jobs:
         secret: ${{ github.TOKEN }}
         approvers: yadavgopal02
         minimum-approvals: 1
-        issue-title: "Deploying Staging to Dev"
+        issue-title: "Deploying Dev to production"
         issue-body: "Please approve or deny the deployment of version v1"
         exclude-workflow-initiator-as-approver: false
-        additional-approved-words: 'reviewed'
-        additional-denied-words: 'wait'
+        additional-approved-words: ' '
+        additional-denied-words: ''
         
     - name: Checkout repository
       uses: actions/checkout@v2
