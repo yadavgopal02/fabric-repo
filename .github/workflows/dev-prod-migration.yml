@@ -2,7 +2,8 @@ name: Fabric API Call
 
 on:
   pull_request:
-    types: [opened, reopened, synchronize, closed]  
+    types:
+      - opened
   push:
     branches:
       - dev
