@@ -17,7 +17,7 @@ jobs:
       env:
         AZURE_USERNAME: ${{ secrets.AZURE_USERNAME }}
         AZURE_PASSWORD: ${{ secrets.AZURE_PASSWORD }}
-        
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: true
       run: |
         az login --username $AZURE_USERNAME --password $AZURE_PASSWORD
         ACCESS_TOKEN=$(az account get-access-token --resource "https://api.fabric.microsoft.com" --query "accessToken" -o tsv)
