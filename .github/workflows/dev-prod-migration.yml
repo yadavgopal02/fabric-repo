@@ -18,10 +18,8 @@ jobs:
     
     - uses: kentaro-m/auto-assign-action@v2.0.0
       with:
-        addReviewers: true
-        addAssignees: false
-        reviewers: yadavgopal02
-        numberOfReviewers: 0
+        configuration-path: '.github/workflows/configs.yml'
+ 
         
     - uses: trstringer/manual-approval@v1
       with:
