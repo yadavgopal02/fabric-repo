@@ -46,14 +46,22 @@ jobs:
       id: read_file
       run: |
         parameter_value=$(cat deploy/notebook.py)
-     
+
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v33
+      
     - name: Make API Call
       env:
         ID_TOKEN: ${{ secrets.MYID_TOKEN }}
     
 
       run: |
-        parameter_value=$(cat deploy/notebook.py)
+        #parameter_value=$(cat deploy/notebook.py)
+        for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+        
+        stackfile=$(echo $file | cut -f2 -d'/')
+        parameter_value=$(cat deploy/$stackfile)
         curl --location 'https://api.fabric.microsoft.com/v1/workspaces/029ea194-7a2f-492e-8fa9-d1e471195c57/notebooks' \
         --header 'Content-Type: application/json' \
         --header 'Host: graph.microsoft.com' \
