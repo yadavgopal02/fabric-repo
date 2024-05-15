@@ -1,6 +1,11 @@
 name: Fabric API Call
 
 on:
+  issues:
+    types: [opened, edited, labeled, unlabeled]
+  pull_request:
+    types: [opened, edited, labeled, unlabeled]
+    
   push:
     branches:
       - main
@@ -16,7 +21,7 @@ jobs:
   
     steps:
     
-    - uses: kentaro-m/auto-assign-action@v2.0.0
+    - uses: wow-actions/auto-assign@v3
       with:
         configuration-path: '.github/workflows/configs.yml'
  
