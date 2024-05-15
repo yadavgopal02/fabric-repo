@@ -43,7 +43,7 @@ jobs:
     steps:
       - uses: shufo/auto-assign-reviewer-by-files@v1.1.5
         with:
-          config: ".github/assign-by-files.yml"
+          config: ".github/workflows/configs.yml"
           token: ${{ secrets.GITHUB_TOKEN }}    
        
           
