@@ -39,7 +39,7 @@ jobs:
         curl --location 'https://api.fabric.microsoft.com/v1/workspaces/029ea194-7a2f-492e-8fa9-d1e471195c57/notebooks' \
         --header 'Content-Type: application/json' \
         --header 'Host: graph.microsoft.com' \
-        --header 'Authorization: Bearer --TOKEN--' \
+        --header 'Authorization: Bearer ${{ env.AZURE_ACCESS_TOKEN }}' \
         --data '{
           "displayName":"notebook-12",
           "description":"test desc"
