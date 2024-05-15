@@ -19,8 +19,6 @@ jobs:
       - uses: shufo/auto-assign-reviewer-by-files@v1.1.5
         with:
           config: ".github/config.yml"
-          token: ${{ secrets.GITHUB_TOKEN }}
-
           
   Dev-Migration:
     runs-on: ubuntu-latest
