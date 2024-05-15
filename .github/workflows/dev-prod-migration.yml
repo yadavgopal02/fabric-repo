@@ -20,7 +20,7 @@ jobs:
       with:
         addReviewers: true
         reviewers:
-        - yadavgopal02
+          - yadavgopal02
         numberOfReviewers: 0
         
     - uses: trstringer/manual-approval@v1
