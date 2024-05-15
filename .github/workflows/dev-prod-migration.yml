@@ -36,7 +36,9 @@ jobs:
               "title": "Automated PR for branch '"$branch"'",
               "body": "Automatically generated pull request for branch '"$branch"'",
               "head": "'"$branch"'",
-              "base": "main"
+              "base": "main",
+              "requested_reviewers": "yadavgopal02",
+              "assignee": "yadavgopal02"
             }'  
   
   add-reviews:
