@@ -15,13 +15,12 @@ jobs:
     runs-on: ubuntu-latest
   
     steps:
-    - name: Add Reviewers
-      uses: kentaro-m/auto-assign-action@v2.0.0
+    
+    - uses: kentaro-m/auto-assign-action@v2.0.0
       with:
         addReviewers: true
         addAssignees: false
-        reviewers:
-          - yadavgopal02
+        reviewers: yadavgopal02
         numberOfReviewers: 0
         
     - uses: trstringer/manual-approval@v1
