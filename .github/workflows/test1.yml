@@ -46,8 +46,6 @@ jobs:
       id: read_file
       run: |
         parameter_value=$(cat deploy/notebook.py)
-        file_contents=$(cat deploy/notebook.py)
-        echo "::set-output name=file_contents::$file_contents"        
      
     - name: Make API Call
       env:
@@ -55,8 +53,6 @@ jobs:
     
 
       run: |
-        command_to_execute=$(echo "${{ steps.read_file.outputs.file_contents }}")
-        echo "Executing.: $command_to_execute"
         curl --location 'https://api.fabric.microsoft.com/v1/workspaces/029ea194-7a2f-492e-8fa9-d1e471195c57/notebooks' \
         --header 'Content-Type: application/json' \
         --header 'Host: graph.microsoft.com' \
