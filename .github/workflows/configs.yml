@@ -1,11 +1,9 @@
-# you can use glob pattern
+# it will matches only js files under the root directory
+"*.py":
+  - yadavgopal02
+# it will matches `.github/foo.yaml` but not `.github/workflows/bar.yaml`
+".github/*":
+  - yadavgopal02
+# it will match any files
 "**/*":
   - yadavgopal02
-
-".github/workflows/*.yml":
-  - yadavgopal02
-
-# you can set multiple reviewers
-".github/**/*.yml":
-  - yadavgopal02
-  
