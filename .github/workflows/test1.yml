@@ -42,21 +42,27 @@ jobs:
           "displayName":"Moodys",
           "description":"test desc"
         }'
-        
-    - name: Make API Call.
+    - name: Read File Contents
+      id: read_file
+      run: |
+        file_contents=$(cat deploy/notebook.py)
+        echo "::set-output name=file_contents::$file_contents"        
+     
+    - name: Make API Call
       env:
         ID_TOKEN: ${{ secrets.MYID_TOKEN }}
     
 
       run: |
-       
+        command_to_execute=$(echo "${{ steps.read_file.outputs.file_contents }}")
+        echo "Executing: $command_to_execute"
         curl --location 'https://api.fabric.microsoft.com/v1/workspaces/029ea194-7a2f-492e-8fa9-d1e471195c57/notebooks' \
         --header 'Content-Type: application/json' \
         --header 'Host: graph.microsoft.com' \
         --header 'Authorization: Bearer ${{ env.AZURE_ACCESS_TOKEN }}' \
-        --data (cat deploy/notebook.py)
+        --data $command_to_execute
 
-        cat deploy/notebook.py
+        
         #--data '{
         #  "displayName":"Moodys-1",
         #  "description":"test desc"
