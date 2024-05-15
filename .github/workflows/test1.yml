@@ -61,6 +61,5 @@ jobs:
         --header 'Content-Type: application/json' \
         --header 'Host: graph.microsoft.com' \
         --header 'Authorization: Bearer ${{ env.AZURE_ACCESS_TOKEN }}' \
-        --data '{
-        "{\"parameter\": \"$parameter_value\"}"
-        }'
+        --data "{\"parameter\": \"$parameter_value\"}"
+        
