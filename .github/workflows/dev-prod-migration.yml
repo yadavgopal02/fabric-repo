@@ -121,7 +121,7 @@ jobs:
         run: |
           # Extract branch name from ref
           #branch=$(echo "${{ github.ref }}" | awk -F'/' '{print $3}')
-          branch = "main"
+          branch="main"
           # Open a PR using GitHub API
           curl -X POST \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
