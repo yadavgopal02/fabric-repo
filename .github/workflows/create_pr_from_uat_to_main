@@ -1,0 +1,43 @@
+name: Create PR from dev to uat
+
+on:
+  push:
+    branches:
+      - uat
+
+jobs:
+  create_pr_and_add_reviewers:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Generate Random Title
+        id: random_title
+        run: echo "::set-output name=title::Automated PR from dev to uat $(shuf -i 1-1000 -n 1)"
+
+      - name: Open PR from dev to uat and add reviewers
+        if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
+        run: |
+          response=$(curl -X POST \
+          -H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/${{ github.repository }}/pulls \
+          -d '{
+            "title": "${{ steps.random_title.outputs.title }}",
+            "body": "Automatically generated pull request from UAT to Production",
+            "head": "uat",
+            "base": "main"
+          }')
+          echo "$response"
+
+          # Extract the PR number from the response
+          pr_number=$(echo "$response" | jq -r '.number')
+
+          # Add reviewers to the PR
+          curl -X POST \
+          -H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          -d '{"reviewers":["yadavgopal", "ravip333"]}' \
+          "https://api.github.com/repos/${{ github.repository }}/pulls/${pr_number}/requested_reviewers"
