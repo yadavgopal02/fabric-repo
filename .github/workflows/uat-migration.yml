@@ -1,6 +1,8 @@
 name: Fabric UAT Migration - Step1
 
 on:
+  pull_request:
+    types: [opened, reopened, synchronize, closed]
   push:
     branches:
       - dev
@@ -15,6 +17,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: assign_reviewer
+        uses: shufo/auto-assign-reviewer-by-files@v1.1.5
+        with:
+          config: ".github/workflows/configs-shufo.yml"
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+          
       - name: Checkout code
         uses: actions/checkout@v2
 
