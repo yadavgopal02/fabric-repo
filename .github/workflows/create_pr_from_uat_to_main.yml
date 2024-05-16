@@ -15,7 +15,7 @@ jobs:
         
       - name: Generate Random Title
         id: random_title
-        run: echo "::set-output name=title::Automated PR raised from UAT to Production Migration:  $(shuf -i 1-1000 -n 1)"
+        run: echo "::set-output name=title::Automated PR raised from UAT to Production Migration - $(shuf -i 1-1000 -n 1)"
 
       - name: Open PR from UAT to Production and add reviewers
         if: github.event_name == 'push' && github.ref == 'refs/heads/uat'
