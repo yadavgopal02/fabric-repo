@@ -29,6 +29,8 @@
 # subdirectories.
 #/build/logs/ @doctocat
 .github/CODEOWNERS  @yadavgopal02
+/deploy/    @yadavgopal02
+deploy/     @yadavgopal02
 # The `docs/*` pattern will match files like
 # `docs/getting-started.md` but not further nested files like
 # `docs/build-app/troubleshooting.md`.
