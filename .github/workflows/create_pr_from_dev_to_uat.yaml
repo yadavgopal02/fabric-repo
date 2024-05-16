@@ -1,0 +1,30 @@
+name: Create PR from dev to uat
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  create_pr_from_dev_to_uat:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Open PR from dev to uat
+        if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/pulls \
+            -d '{
+              "title": "Automated PR from dev to uat",
+              "body": "Automatically generated pull request from dev to uat",
+              "head": "dev",
+              "base": "uat",
+              "requested_reviewers": ["yadavgopal02"],
+              "assignee": "yadavgopal02"
+            }'
