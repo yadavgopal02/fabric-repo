@@ -29,7 +29,7 @@ jobs:
             "body": "Automatically generated pull request from dev to uat",
             "head": "dev",
             "base": "uat",
-            "requested_reviewers": ["yadavgopal", "ravip333"],
-            "assignee": "yadavgopal"
+            "requested_reviewers": ['yadavgopal', 'ravip333'],
+            "assignee": 'ravip333'
           }')
           echo "$response"
