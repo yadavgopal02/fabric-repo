@@ -38,7 +38,7 @@ jobs:
   
   UAT-Migration:
     runs-on: ubuntu-latest
-
+    needs: create_pr_for_uat
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
