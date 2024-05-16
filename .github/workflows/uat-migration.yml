@@ -3,7 +3,7 @@ name: Fabric UAT Migration - Step1
 on:
   push:
     branches:
-      - uat
+      - dev
     path:
       - deploy/**
     paths-ignore:
@@ -21,7 +21,8 @@ jobs:
       - name: Open PR for new branch
         if: github.event_name == 'push' && github.ref_type == 'branch'
         run: |
-          branch=$(echo "${{ github.ref }}" | awk -F'/' '{print $3}')
+          #branch=$(echo "${{ github.ref }}" | awk -F'/' '{print $3}')
+          branch="uat"
           curl -X POST \
             -H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
@@ -30,9 +31,7 @@ jobs:
               "title": "Automated PR for branch '"$branch"'",
               "body": "Automatically generated pull request for branch '"$branch"'",
               "head": "'"$branch"'",
-              "base": "main",
-              "requested_reviewers": ["yadavgopal02"],
-              "assignee": "yadavgopal02"
+              "base": "main"
             }'
 
   
