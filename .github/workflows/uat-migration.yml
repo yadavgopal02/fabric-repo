@@ -50,7 +50,7 @@ jobs:
         run: |
           az login --username $AZURE_USERNAME --password $AZURE_PASSWORD
 
-          echo "::set-env name=AZURE_ACCESS_TOKEN::$(az account get-access-token --resource https://api.fabric.microsoft.com --query accessToken -o tsv)"
+          echo "::set-env name=AZURE_ACCESS_TOKEN::$(az account get-access-token --resource "https://api.fabric.microsoft.com" --query "accessToken" -o tsv)"
           echo "Access Token: ${{ env.AZURE_ACCESS_TOKEN }}"
 
       - name: Get changed files
