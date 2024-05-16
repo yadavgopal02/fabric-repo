@@ -17,8 +17,8 @@ jobs:
         id: random_title
         run: echo "::set-output name=title::Automated PR from dev to uat $(shuf -i 1-1000 -n 1)"
 
-      - name: Open PR from dev to uat and add reviewers
-        if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
+      - name: Open PR from UAT to Production and add reviewers
+        if: github.event_name == 'push' && github.ref == 'refs/heads/uat'
         run: |
           response=$(curl -X POST \
           -H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
