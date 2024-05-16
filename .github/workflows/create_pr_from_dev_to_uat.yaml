@@ -40,4 +40,4 @@ jobs:
           -H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
           -H "Accept: application/vnd.github.v3+json" \
           -d '{"reviewers":["yadavgopal", "ravip333"]}' \
-          "https://api.github.com/repos/${{ github.repository }}/pulls/${pr_number}}/requested_reviewers"
+          "https://api.github.com/repos/${{ github.repository }}/pulls/${pr_number}/requested_reviewers"
