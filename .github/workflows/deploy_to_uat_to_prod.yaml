@@ -1,4 +1,4 @@
-name: Deploy to UAT after Merge
+name: Deploy to Production after Merge
 
 on:
   pull_request:
