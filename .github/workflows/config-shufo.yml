@@ -1,9 +1,0 @@
-# it will matches only js files under the root directory
-"*.py":
-  - ravip333
-# it will matches `.github/foo.yaml` but not `.github/workflows/bar.yaml`
-"deploy/*":
-  - ravip333
-# it will match any files
-"**/*":
-  - ravip333
