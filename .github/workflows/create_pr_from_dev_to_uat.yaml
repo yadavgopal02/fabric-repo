@@ -15,9 +15,9 @@ jobs:
         
       - name: Generate Random Title
         id: random_title
-        run: echo "::set-output name=title::Automated PR from dev to uat $(shuf -i 1-1000 -n 1)"
+        run: echo "::set-output name=title::Automated PR from Dev to UAT Environment $(shuf -i 1-1000 -n 1)"
 
-      - name: Open PR from dev to uat and add reviewers
+      - name: Open PR from Dev to UAT and add reviewers
         if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
         run: |
           response=$(curl -X POST \
@@ -26,7 +26,7 @@ jobs:
           https://api.github.com/repos/${{ github.repository }}/pulls \
           -d '{
             "title": "${{ steps.random_title.outputs.title }}",
-            "body": "Automatically generated pull request from dev to uat",
+            "body": "Automatically generated pull request from Dev to UAT Environment",
             "head": "dev",
             "base": "uat"
           }')
