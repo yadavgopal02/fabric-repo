@@ -1,0 +1,84 @@
+name: Fabric UAT Migration - Step1
+
+on:
+  push:
+    branches:
+      - uat
+    paths:
+      - deploy/**
+    paths-ignore:
+      - .github/**
+      - dest/**
+
+jobs:
+  create_pr_for_uat:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Open PR for new branch
+        if: github.event_name == 'push' && github.ref_type == 'branch'
+        run: |
+          branch=$(echo "${{ github.ref }}" | awk -F'/' '{print $3}')
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/pulls \
+            -d '{
+              "title": "Automated PR for branch '"$branch"'",
+              "body": "Automatically generated pull request for branch '"$branch"'",
+              "head": "'"$branch"'",
+              "base": "main",
+              "requested_reviewers": ["yadavgopal02"],
+              "assignee": "yadavgopal02"
+            }'
+
+      - name: Add reviewer
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const response = await github.pulls.createReviewRequest({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              reviewers: ['yadavgopal02']
+            });
+            console.log(response);
+  
+  UAT-Migration:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        env:
+          AZURE_USERNAME: ${{ secrets.AZURE_USERNAME }}
+          AZURE_PASSWORD: ${{ secrets.AZURE_PASSWORD }}
+        run: |
+          az login --username $AZURE_USERNAME --password $AZURE_PASSWORD
+
+          echo "::set-env name=AZURE_ACCESS_TOKEN::$(az account get-access-token --resource https://api.fabric.microsoft.com --query accessToken -o tsv)"
+          echo "Access Token: ${{ env.AZURE_ACCESS_TOKEN }}"
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v33
+
+      - name: Make API Call
+        env:
+          ID_TOKEN: ${{ secrets.MYID_TOKEN }}
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            stackfile=$(echo $file | cut -f2 -d'/')
+            parameter_value=$(cat deploy/$stackfile)
+            curl --location 'https://api.fabric.microsoft.com/v1/workspaces/029ea194-7a2f-492e-8fa9-d1e471195c57/notebooks' \
+              --header 'Content-Type: application/json' \
+              --header 'Host: graph.microsoft.com' \
+              --header "Authorization: Bearer ${{ env.AZURE_ACCESS_TOKEN }}" \
+              --data "$parameter_value"
+          done
