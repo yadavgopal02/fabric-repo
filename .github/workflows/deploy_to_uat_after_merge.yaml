@@ -3,10 +3,11 @@ name: Deploy to UAT after Merge
 on:
   pull_request:
     types: [closed]
-  path:
-    deploy/**
-  paths-ignore:
-    .github/**
+    path:
+      - deploy/**
+    paths-ignore:
+      - .github/**
+      
     
 
 jobs:
