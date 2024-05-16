@@ -50,7 +50,7 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             pull_number: context.payload.pull_request.number,
-            reviewers: ['yadavgopal02']
+            reviewers: ['ravip333']
             });
 
             console.log(response);
