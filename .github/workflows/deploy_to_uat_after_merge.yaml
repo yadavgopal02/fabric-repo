@@ -4,9 +4,10 @@ on:
   pull_request:
     types: [closed]
   path:
-    deploy/**
+    - deploy/**
   paths-ignore:
-    .github/**
+    - .github/**
+      
     
 
 jobs:
