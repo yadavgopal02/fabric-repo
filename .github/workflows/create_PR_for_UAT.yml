@@ -44,7 +44,7 @@ jobs:
 
       - name: Assign PR opener as assignee
         run: |
-          assignees="${{ github.actor }},yadavgopal"
+          assignees="${{ github.actor }}"
           pr_number="${{ github.event.pull_request.number }}"
           curl -X PATCH \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
