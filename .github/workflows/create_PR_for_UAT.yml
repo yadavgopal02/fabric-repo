@@ -43,13 +43,19 @@ jobs:
           "https://api.github.com/repos/${{ github.repository }}/pulls/${pr_number}/requested_reviewers"
 
       
+      - name: Debug
+        run: |
+          echo "Pull request number from event payload: ${{ github.event.pull_request.number }}"
+      - name: Assign PR opener as assignee
+        run: |
+          pr_number=$(echo "$response" | jq -r '.number')
           assignees="ravip333"
+          echo "PR number: $pr_number"
           curl -X PATCH \
             -H "Authorization: ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
             -d "{\"assignees\":[${assignees// /}]}" \
             "https://api.github.com/repos/yadavgopal02/fabric-repo/pulls/${pr_number}"
-            
             
 
           
