@@ -47,10 +47,12 @@ jobs:
           assignees="${{ github.actor }}"
           pr_number="${{ github.event.pull_request.number }}"
           curl -X PATCH \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
             -d "{\"assignees\":[${assignees// /}]}" \
             "https://api.github.com/repos/${{ github.repository }}/pulls/${pr_number}"
+            
+            
 
           
       
