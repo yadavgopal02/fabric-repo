@@ -36,17 +36,16 @@ jobs:
           pr_number=$(echo "$response" | jq -r '.number')
 
           # Add reviewers to the PR
-          #curl -X POST \
-          #-H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
-          #-H "Accept: application/vnd.github.v3+json" \
-          #-d '{"reviewers":["yadavgopal", "gopalyadav-moodys"]}' \
-          #"https://api.github.com/repos/${{ github.repository }}/pulls/${pr_number}/requested_reviewers"
-
-          curl -X POST \ 
+          curl -X POST \
           -H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
-          -H "Accept: application/vnd.github.v3+json" \ 
-          -d '{"reviewers":["yadavgopal", "gopalyadav-moodys"], "assignees":["yadavgopal"]}' \
+          -H "Accept: application/vnd.github.v3+json" \
+          -d '{"reviewers":["yadavgopal", "gopalyadav-moodys"]}' \
           "https://api.github.com/repos/${{ github.repository }}/pulls/${pr_number}/requested_reviewers"
+
+          curl -X POST \
+          -H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          -d '{"assignees":["yadavgopal"]}' \
+          "https://api.github.com/repos/${{github.repository }}/issues/${issue_number}/assignees"
+      
           
-      
-      
