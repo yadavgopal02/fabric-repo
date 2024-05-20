@@ -46,6 +46,7 @@ jobs:
         run: |
             assignees="ravip333"
             pr_number="${{ github.event.pull_request.number }}"
+            echo "PR number: $pr_number"
             curl -X PATCH \
               -H "Authorization: ${{ secrets.GITHUB_TOKEN }}" \
               -H "Accept: application/vnd.github.v3+json" \
