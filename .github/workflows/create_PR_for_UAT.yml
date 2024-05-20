@@ -42,14 +42,11 @@ jobs:
           -d '{"reviewers":["yadavgopal", "gopalyadav-moodys"]}' \
           "https://api.github.com/repos/${{ github.repository }}/pulls/${pr_number}/requested_reviewers"
 
-          curl -X PATCH \
-          -H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
-          -H "Accept: application/vnd.github.v3+json" \
-          -d '{"assignees":["ravip333", "yadavgopal"]}' \
-          "https://api.github.com/repos/${{ github.repository }}/pulls/${pr_number}"
-          echo "Response from adding assignees:"
-          echo "$response_assignees"
-
+      - name: Assign PR opener as assignee
+        uses: actions-ecosystem/action-add-assignees@v1
+        with:
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          assignees: ${{ github.actor }}, ravip333, yadavgopal
 
           
       
