@@ -1,4 +1,4 @@
 {
-  displayName: "Notebook-mytest6",
+  displayName: "Notebook-mytest7",
   description: "A notebook description"
 }
