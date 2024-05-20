@@ -39,5 +39,5 @@ jobs:
           curl -X POST \
           -H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
           -H "Accept: application/vnd.github.v3+json" \
-          -d '{"reviewers":["yadavgopal"]}' \
+          -d '{"reviewers":["yadavgopal", "yadavgopal"]}' \
           "https://api.github.com/repos/${{ github.repository }}/pulls/${pr_number}/requested_reviewers"
