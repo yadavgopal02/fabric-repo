@@ -45,7 +45,7 @@ jobs:
           curl -X PATCH \
           -H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
           -H "Accept: application/vnd.github.v3+json" \
-          -d '{"assignees":["ravip333", "yadavgopal",]}' \
+          -d '{"assignees":["ravip333", "yadavgopal"]}' \
           "https://api.github.com/repos/${{ github.repository }}/pulls/${pr_number}/requested_assignees"
 
 
