@@ -47,6 +47,8 @@ jobs:
           -H "Accept: application/vnd.github.v3+json" \
           -d '{"assignees":["ravip333", "yadavgopal"]}' \
           "https://api.github.com/repos/${{ github.repository }}/pulls/${pr_number}"
+          echo "Response from adding assignees:"
+          echo "$response_assignees"
 
 
           
