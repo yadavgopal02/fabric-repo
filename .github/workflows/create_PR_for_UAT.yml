@@ -50,11 +50,7 @@ jobs:
           pr_number=$(echo "$pr_url" | grep -oE '[0-9]+$')
           echo "PR URL: $pr_url"
           echo "Extracted PR number: $pr_number"
-          curl -X POST \
-            -H "Authorization: ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            -d "{\"assignees\":[\"$opener\"]}" \
-            "https://api.github.com/repos/${{ github.repository }}/issues/$pr_number/assignees"
+
 
 
           
