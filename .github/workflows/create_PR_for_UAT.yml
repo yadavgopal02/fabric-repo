@@ -4,10 +4,7 @@ on:
   push:
     branches:
       - dev
-    paths:
-      - 'deploy/**'  # Specify the folder to watch
-    paths-ignore:
-      - '**'  # Ignore changes outside the specified folder
+   
 
 jobs:
   create_pr_and_add_reviewers:
