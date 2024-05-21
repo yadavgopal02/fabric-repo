@@ -43,14 +43,12 @@ jobs:
           "https://api.github.com/repos/${{ github.repository }}/pulls/${pr_number}/requested_reviewers"
 
       
-      - name: Extract PR number from response
-        if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
-        run: |
-          pr_url=$(echo "$response" | jq -r '.url')
-          pr_number=$(echo "$pr_url" | awk -F'/' '{print $NF}')
-          echo "PR URL: $pr_url"
-          echo "Extracted PR number: $pr_number"
-        continue-on-error: true
+           # Assign users as assignees to the PR
+          curl -X POST \
+          -H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          -d '{"assignees":["yadavgopal", "ravip333"]}' \
+          "https://api.github.com/repos/${{ github.repository }}/issues/${pr_number}/assignees"
 
 
 
