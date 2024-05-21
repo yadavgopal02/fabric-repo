@@ -46,7 +46,7 @@ jobs:
       - name: Assign PR opener as assignee
         if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
         run: |
-          pr_number=$(echo "$response" | jq -r '.number')
+          pr_number=$(echo "$response" | jq -r '.url' | grep -oE '[0-9]+$')
           opener=$(echo "$response" | jq -r '.user.login')
           echo "PR number: $pr_number"
           echo "Opener: $opener"
@@ -54,8 +54,8 @@ jobs:
             -H "Authorization: ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
             -d "{\"assignees\":[\"$opener\"]}" \
-            "https://api.github.com/repos/${{ github.repository }}/issues/${pr_number}/assignees"
-                  
+            "https://api.github.com/repos/${{ github.repository }}/issues/$pr_number/assignees"
+
 
           
       
