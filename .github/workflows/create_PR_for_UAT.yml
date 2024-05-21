@@ -47,9 +47,11 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
         run: |
           pr_url=$(echo "$response" | jq -r '.url')
-          pr_number=$(echo "$pr_url" | grep -oE '[0-9]+$')
+          pr_number=$(echo "$pr_url" | awk -F'/' '{print $NF}')
           echo "PR URL: $pr_url"
           echo "Extracted PR number: $pr_number"
+        continue-on-error: true
+
 
 
 
