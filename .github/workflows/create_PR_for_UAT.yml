@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - dev
+   
 
 jobs:
   create_pr_and_add_reviewers:
@@ -41,6 +42,17 @@ jobs:
           -H "Accept: application/vnd.github.v3+json" \
           -d '{"reviewers":["yadavgopal", "gopalyadav-moodys"]}' \
           "https://api.github.com/repos/${{ github.repository }}/pulls/${pr_number}/requested_reviewers"
+
+      
+           # Assign users as assignees to the PR
+          curl -X POST \
+          -H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          -d '{"assignees":["gopalyadav-moodys", "ravip333"]}' \
+          "https://api.github.com/repos/${{ github.repository }}/issues/${pr_number}/assignees"
+
+
+
 
           
       
