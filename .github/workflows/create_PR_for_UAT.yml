@@ -47,7 +47,7 @@ jobs:
           curl -X POST \
           -H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
           -H "Accept: application/vnd.github.v3+json" \
-          -d '{"assignees":["yadavgopal", "ravip333"]}' \
+          -d '{"assignees":["gopalyadav-moodys", "ravip333"]}' \
           "https://api.github.com/repos/${{ github.repository }}/issues/${pr_number}/assignees"
 
 
