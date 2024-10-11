@@ -1,35 +1,22 @@
-name: Fabric API Call
+name: Deploy on File Upload
 
 on:
   push:
-    branches:
-      - main
-    path:
-      - cp_fabric_lakehouse/**
-    paths-ignore:
-      - .github/**
-      - dest/**
-      - deploy/**
-      
+    paths:
+      - 'OneLake-Lakehouse-Upload.ps1/**'
+
 jobs:
-  call_api:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Azure Login
-      env:
-        AZURE_USERNAME: ${{ secrets.AZURE_USERNAME }}
-        AZURE_PASSWORD: ${{ secrets.AZURE_PASSWORD }}
-        ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-      run: |
-        az login --username $AZURE_USERNAME --password $AZURE_PASSWORD
-
     - name: Set up PowerShell
       uses: actions/setup-powershell@v1
 
     - name: Run PowerShell script
       run: |
-        pwsh -file /.github/workflows/OneLake-Lakehouse-Upload.ps1
+        pwsh -file ./.github/workflows/OneLake-Lakehouse-Upload.ps1
+
