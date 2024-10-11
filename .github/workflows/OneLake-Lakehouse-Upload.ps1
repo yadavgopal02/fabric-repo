@@ -1,7 +1,7 @@
 ﻿#Powershell script to upload files to OneLake
 
 #Install the following module if you haven't got in installed
-#Install-Module Az.Storage -Repository PSGallery -Force
+Install-Module Az.Storage -Repository PSGallery -Force
 
 ###############################################################################################################################################################################
 #Fill in the paramters
