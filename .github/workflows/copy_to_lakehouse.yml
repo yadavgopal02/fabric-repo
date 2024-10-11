@@ -27,44 +27,9 @@ jobs:
       run: |
         az login --username $AZURE_USERNAME --password $AZURE_PASSWORD
 
-        $tenantId = '55ea6196-70b9-4411-92f5-04a54791f120'                                                #Get from the Azure Portal
-        $workspaceGUID = '0fde94f2-391e-42c0-bc8c-f29f17cac5f6'                                           #Get from Power BI URL
-        $lakehouseGUID = '958077ec-bae1-4bda-b9a2-2116158d5879'                                           #Get from Power BI URL
-        
-        $localFolderPath = ''                                         #Local file path always end with /
-        $localFiles = @('Samplecsvdata.csv')                                           #Remove all files for entire folder - @(). #Otherwise list files out - @('File1.csv', 'File2.txt', 'File3.pdf')
-        $uploadFolderPath = '/Files/test/'                                 #Leave '/Files/' for root folder, always end with /
-        
-        ###############################################################################################################################################################################
-        
-        #Connect-AzAccount -TenantId $tenantId | out-null
-        az login --username "gopal.yadav@stratacent.com" --password 'F2afgchgrf@Strata'
-        $ctx = New-AzStorageContext -StorageAccountName 'onelake' -UseConnectedAccount -endpoint 'fabric.microsoft.com' 
-        #Context is needed to upload to Onelake and not Data Lake
-        
-        $Count = $localFiles.Count
-        if ($Count -eq 0)                       #If there were no files provided, upload entire folder
-        {
-           $Files = Get-ChildItem -Path $localFolderPath
-            foreach ($f in $Files) 
-            {
-                  $uploadPath = $lakehouseGUID + $uploadFolderPath + $f
-                  $localPath = $localFolderPath + $f
-                  New-AzDataLakeGen2Item -Context $ctx -FileSystem $workspaceGUID -Path $uploadPath -Source $localPath -Force | out-null
-                  $TextOutput = "Uploading " + $f
-                  Write-Output $TextOutput
-            }    
-        
-        }
-        else                                    #If there were files provided, upload those files
-        {   
-            foreach ($f in $localFiles)
-            {
-                    $uploadPath = $lakehouseGUID + $uploadFolderPath + $f
-                    $localPath = $localFolderPath + $f
-                    New-AzDataLakeGen2Item -Context $ctx -FileSystem $workspaceGUID -Path $uploadPath -Source $localPath -Force | out-null
-                    $TextOutput = "Uploading " + $f
-                    Write-Output $TextOutput
-            }
-        }
-        #=============
+    - name: Set up PowerShell
+      uses: actions/setup-powershell@v1
+
+    - name: Run PowerShell script
+      run: |
+        pwsh -file /.github/workflows/OneLake-Lakehouse-Upload.ps1
