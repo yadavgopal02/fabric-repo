@@ -15,8 +15,8 @@ $uploadFolderPath = '/Files/test/'                                 #Leave '/File
 
 ###############################################################################################################################################################################
 
-#Connect-AzAccount -TenantId $tenantId | out-null
-az login --username "gopal.yadav@stratacent.com" --password 'F2afgchgrf@Strata'
+Connect-AzAccount -TenantId $tenantId | out-null
+#az login --username "gopal.yadav@stratacent.com" --password 'F2afgchgrf@Strata'
 Install-Module -Name Az.Storage -Repository PSGallery -Force -Scope CurrentUser
 Import-Module Az.Storage
 Get-Command -Module Az.Storage
