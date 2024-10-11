@@ -3,7 +3,7 @@ name: Deploy on File Upload
 on:
   push:
     paths:
-      - 'OneLake-Lakehouse-Upload.ps1/**'
+      - 'cp_fabric_lakehouse/**'
 
 jobs:
   deploy:
